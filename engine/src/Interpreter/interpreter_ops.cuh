@@ -683,6 +683,24 @@ private:
 				} else if(oper == operator_type::BLZ_ATAN) {
 					double val = static_cast<double>(left_value);
 					store_data_in_buffer(atan(val), buffer, output_position);
+				} else if(oper == operator_type::BLZ_SINH) {
+					double val = static_cast<double>(left_value);
+					store_data_in_buffer(sinh(val), buffer, output_position);
+				} else if(oper == operator_type::BLZ_COSH) {
+					double val = static_cast<double>(left_value);
+					store_data_in_buffer(cosh(val), buffer, output_position);
+				} else if(oper == operator_type::BLZ_TANH) {
+					double val = static_cast<double>(left_value);
+					store_data_in_buffer(tanh(val), buffer, output_position);
+				} else if(oper == operator_type::BLZ_ASINH) {
+					double val = static_cast<double>(left_value);
+					store_data_in_buffer(asinh(val), buffer, output_position);
+				} else if(oper == operator_type::BLZ_ACOSH) {
+					double val = static_cast<double>(left_value);
+					store_data_in_buffer(acosh(val), buffer, output_position);
+				} else if(oper == operator_type::BLZ_ATANH) {
+					double val = static_cast<double>(left_value);
+					store_data_in_buffer(atanh(val), buffer, output_position);
 				} else if(oper == operator_type::BLZ_ABS) {
 					if (is_float_type(left_type_id)){
 						double val = static_cast<double>(left_value);
@@ -764,7 +782,7 @@ private:
 							// should not reach here, invalid conversion
 							assert(false);
 							break;
-					}	
+					}
 
 					store_data_in_buffer(static_cast<int64_t>(computed.time_since_epoch().count()), buffer, output_position);
 				} else if(oper == operator_type::BLZ_CAST_TIMESTAMP) {
@@ -844,10 +862,10 @@ __global__ void transformKernel(InterpreterFunctor op, cudf::size_type size, cur
 	extern __shared__ int64_t total_buffer[];
 
     int id = threadIdx.x + blockIdx.x * blockDim.x;
-    
+
 
     curandState localState = state[id];
- 
+
 
 	for(cudf::size_type i = (blockIdx.x * blockDim.x + threadIdx.x) * 32; i < size; i += blockDim.x * gridDim.x * 32) {
 		op(i, total_buffer, size, localState);

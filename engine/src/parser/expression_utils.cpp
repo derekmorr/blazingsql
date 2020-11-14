@@ -31,6 +31,11 @@ bool is_unary_operator(operator_type op) {
 	case operator_type::BLZ_TAN:
 	case operator_type::BLZ_COTAN:
 	case operator_type::BLZ_ATAN:
+	case operator_type::BLZ_SINH:
+	case operator_type::BLZ_COSH:
+	case operator_type::BLZ_ASINH:
+	case operator_type::BLZ_ACOSH:
+	case operator_type::BLZ_ATANH:
 	case operator_type::BLZ_LN:
 	case operator_type::BLZ_LOG:
 	case operator_type::BLZ_CBRT:
@@ -144,6 +149,11 @@ cudf::type_id get_output_type(operator_type op, cudf::type_id input_left_type) {
 	case operator_type::BLZ_TAN:
 	case operator_type::BLZ_COTAN:
 	case operator_type::BLZ_ATAN:
+	case operator_type::BLZ_SINH:
+	case operator_type::BLZ_COSH:
+	case operator_type::BLZ_ASINH:
+	case operator_type::BLZ_ACOSH:
+	case operator_type::BLZ_ATANH:
 	case operator_type::BLZ_LN:
 	case operator_type::BLZ_LOG:
 	case operator_type::BLZ_CBRT:
@@ -246,6 +256,12 @@ operator_type map_to_operator_type(const std::string & operator_token) {
 		{"ACOS", operator_type::BLZ_ACOS},
 		{"TAN", operator_type::BLZ_TAN},
 		{"ATAN", operator_type::BLZ_ATAN},
+		{"SINH", operator_type::BLZ_SINH},
+		{"COSH", operator_type::BLZ_COSH},
+		{"TANH", operator_type::BLZ_TANH},
+		{"ASINH", operator_type::BLZ_ASINH},
+		{"ACOSH", operator_type::BLZ_ACOSH},
+		{"ATANH", operator_type::BLZ_ATANH},
 		{"FLOOR", operator_type::BLZ_FLOOR},
 		{"CEIL", operator_type::BLZ_CEIL},
 		{"ABS", operator_type::BLZ_ABS},
