@@ -820,6 +820,16 @@ private:
 				} else if(oper == operator_type::BLZ_CHAR_LENGTH) {
 					int64_t computed = left_str_view.length();
 					store_data_in_buffer(computed, buffer, output_position);
+				} else if(oper == operator_type::BLZ_SIGN) {
+					double val = static_cast<double>(left_value);
+					int sign = signbit(val);
+					if (is_float_type(left_type_id)){
+						double dsign = static_cast<double>(sign);
+						store_data_in_buffer(dsign, buffer, output_position);
+					} else {
+						int64_t isign = static_cast<int64_t>(sign);
+						store_data_in_buffer(isign, buffer, output_position);
+					}
 				}
 			}
 

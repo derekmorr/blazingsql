@@ -58,6 +58,7 @@ bool is_unary_operator(operator_type op) {
 	case operator_type::BLZ_CAST_TIMESTAMP:
 	case operator_type::BLZ_CAST_VARCHAR:
 	case operator_type::BLZ_CHAR_LENGTH:
+	case operator_type::BLZ_SIGN:
 		return true;
 	default:
 		return false;
@@ -165,6 +166,7 @@ cudf::type_id get_output_type(operator_type op, cudf::type_id input_left_type) {
 			return cudf::type_id::FLOAT64;
 		}
 	case operator_type::BLZ_ABS:
+	case operator_type::BLZ_SIGN:
 		return input_left_type;
 	case operator_type::BLZ_NOT:
 	case operator_type::BLZ_IS_NULL:
