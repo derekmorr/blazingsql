@@ -25,6 +25,7 @@ enum class operator_type {
 	BLZ_ATAN,
 	BLZ_LN,
 	BLZ_LOG,
+	BLZ_CBRT,
 	BLZ_YEAR,
 	BLZ_MONTH,
 	BLZ_DAY,

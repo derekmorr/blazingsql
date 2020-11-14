@@ -699,6 +699,9 @@ private:
 				} else if(oper == operator_type::BLZ_LOG) {
 					double val = static_cast<double>(left_value);
 					store_data_in_buffer(log10(val), buffer, output_position);
+				} else if(oper == operator_type::BLZ_CBRT) {
+					double val = static_cast<double>(left_value);
+					store_data_in_buffer(cbrt(val), buffer, output_position);
 				} else if(oper == operator_type::BLZ_YEAR) {
 					int64_t computed = cudf::type_dispatcher(cudf::data_type{left_type_id},
 						launch_extract_component<datetime_component::YEAR>{},	static_cast<int64_t>(left_value));

@@ -33,6 +33,7 @@ bool is_unary_operator(operator_type op) {
 	case operator_type::BLZ_ATAN:
 	case operator_type::BLZ_LN:
 	case operator_type::BLZ_LOG:
+	case operator_type::BLZ_CBRT:
 	case operator_type::BLZ_YEAR:
 	case operator_type::BLZ_MONTH:
 	case operator_type::BLZ_DAY:
@@ -145,6 +146,7 @@ cudf::type_id get_output_type(operator_type op, cudf::type_id input_left_type) {
 	case operator_type::BLZ_ATAN:
 	case operator_type::BLZ_LN:
 	case operator_type::BLZ_LOG:
+	case operator_type::BLZ_CBRT:
 	case operator_type::BLZ_FLOOR:
 	case operator_type::BLZ_CEIL:
 		if(is_type_float(input_left_type)) {
@@ -249,6 +251,7 @@ operator_type map_to_operator_type(const std::string & operator_token) {
 		{"ABS", operator_type::BLZ_ABS},
 		{"LOG10", operator_type::BLZ_LOG},
 		{"LN", operator_type::BLZ_LN},
+		{"CBRT", operator_type::BLZ_CBRT},
 		{"BL_YEAR", operator_type::BLZ_YEAR},
 		{"BL_MONTH", operator_type::BLZ_MONTH},
 		{"BL_DAY", operator_type::BLZ_DAY},
